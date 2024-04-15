@@ -1,23 +1,11 @@
 ---
 title: 【高见3】医疗反腐（上）：旧医改时代回望
 description: 今年医疗反腐力度空前。医疗腐败为何频发？有哪些具体路径？本期就来简单聊聊。
-published: true
+category: opinion
 date: 2023-09-15T14:16:15.894Z
-tags: 高见
-editor: markdown
-dateCreated: 2023-09-06T15:21:53.025Z
+tags: []
+bvid: BV1rp4y1L7hw
 ---
-
-# Tabs {.tabset}
-
-## B站
-
-<div style="position: relative; padding: 30% 45%;">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="//player.bilibili.com/player.html?&bvid=BV1rp4y1L7hw&page=1&as_wide=1&high_quality=1&danmaku=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-</div>
-
-
-#
 
 2023年9月6日星期三，欢迎收看第三期高见。
 
