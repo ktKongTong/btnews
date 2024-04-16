@@ -17,6 +17,7 @@ export default {
       let idxPattern = /\/btnews\/idx\/([0-9]{4}(_5)?)\/?$/
       let datePattern = /\/btnews(\/20[0-9]{2}\/[0-9]{1,2}\/[0-9]{1,2})\/?$/
       let archivePattern = /\/btnews\/archive\/.+\/([0-9]{4}(_5)?)\/?$/
+      let archiveIdxPattern = /\/btnews(\/archive\/.+)\/?$/
       if(to.match(idxPattern)) {
         let res = idxPattern.exec(to)
         let idx = res?.[1]
@@ -34,11 +35,18 @@ export default {
           router.go(id)
         }
       }else if(to.match(archivePattern)) {
-        let res = idxPattern.exec(to)
+        let res = archivePattern.exec(to)
         let idx = res?.[1]
         if(idx) {
           router.go(`/archive/btnews_btnews_${idx}`)
           console.log(`go to/archive/btnews_btnews_${idx}`)
+        }
+      }else if (to.match(archiveIdxPattern)) {
+        let res = archiveIdxPattern.exec(to)
+        let route = res?.[1]
+        if(route) {
+          router.go(route)
+          console.log(route)
         }
       }
     }
