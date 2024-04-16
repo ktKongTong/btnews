@@ -1,0 +1,49 @@
+{
+  "name": "btnews",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "get:new": "ts-node script/index.ts",
+    "pure": "npm run clean  && rm -rf node_modules",
+    "gh-fetch": "node -r ts-node/register --env-file=.env ./script/index.ts",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "description": "睡前消息文稿合集",
+  "license": "MIT",
+  "devDependencies": {
+    "@actions/core": "^1.10.1",
+    "@types/cheerio": "^0.22.35",
+    "@types/js-yaml": "^4.0.9",
+    "@types/uuid": "^9.0.1",
+    "autoprefixer": "^10.4.19",
+    "cheerio": "^1.0.0-rc.12",
+    "commander": "^11.1.0",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.4.5",
+    "feed": "^4.2.2",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "postcss": "^8.4.38",
+    "radash": "^12.1.0",
+    "sharp": "^0.32.6",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.2.2",
+    "unstorage": "^1.10.2",
+    "uuid": "^9.0.0",
+    "vitepress": "^1.1.0",
+    "vue": "^3.4.21"
+  },
+  "dependencies": {
+    "lucide-vue-next": "^0.368.0",
+    "ts-node": "^10.9.2"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
+  }
+}

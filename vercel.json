@@ -1,0 +1,9 @@
+{
+  "outputDirectory": ".vitepress/dist",
+  "cleanUrls": true,
+  "git": {
+    "deploymentEnabled": {
+      "master": false
+    }
+  }
+}

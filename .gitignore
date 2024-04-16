@@ -1,0 +1,16 @@
+.idea
+.vscode
+*.iml
+node_modules
+.temp
+.cache
+.vuepress/dist
+docs/.vuepress/dist
+.yarn
+backup
+# docs/btnews/*
+yarn-error.log
+.DS_Store
+.env
+.vitepress/dist
+.vitepress/cache
