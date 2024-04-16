@@ -9,18 +9,18 @@ export default {
   Layout: ArticleLayout,
   async enhanceApp({ app, router, siteData }) {
     // load
-    router.onBeforeRouteChange = async (to) => {
-      console.log("match",to)
+    router.onBeforePageLoad = async (to) => {
+      console.log("route",to)
       let pt = /\/btnews\/idx\/([0-9]{4}(_5)?)\/?$/
       let datePT = /\/btnews(\/20[0-9]{2}\/[0-9]{1,2}\/[0-9]{1,2})\/?$/
       if(to.match(pt)) {
         let res = pt.exec(to)
         let idx = res[1]
         router.go(`/btnews_btnews_${idx}`)
+        console.log(`go to/btnews_btnews_${idx}`)
       }else if(to.match(datePT)) {
         console.log("match",to)
         console.log('load dateMap')
-
         const datemap = await fetch(`${baseURL}/datemap.json`).then(res=>res.json()) as Record<string, string>
         console.log('dateMap load')
 
@@ -28,6 +28,7 @@ export default {
         let date = res[1]
         let id = datemap[date]
         if(id){
+          console.log(`go to ${id}`)
           router.go(id)
         }
       }
