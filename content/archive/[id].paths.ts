@@ -47,7 +47,9 @@ export default {
           return categories.flatMap(category=> {
             return category.topics.map((topic)=> {
               let content = `# ${topic.topic}\n\n`
-              content = content + topic.articles.map(article=> {
+              content = content + topic.articles
+                .filter(article=>  contentMap[`${article.ns}_${article.category}_${article.id}`])
+                .map(article=> {
                 const entry = contentMap[`${article.ns}_${article.category}_${article.id}`]![0]
                 return `### [${entry.frontmatter.title}](/archive/${entry.id})`
               }).join('\n\n')

@@ -35,7 +35,8 @@ let imagePattern = /(!\[.*]\()(\/images\/[A-Za-z0-9]+\/[A-Za-z0-9]+\/[0-9]{4}_[0
 
 const createDriver = ()=> {
   if(process.env.NODE_ENV === "development" || process.env.DRIVER === "local") {
-    return fsDriver({ base: "./docs/docs",ignore:["**/node_modules/**","**/.git/**","**/images/**",]})
+    let base = process.env.DOCS_PATH ?? "./docs/docs"
+    return fsDriver({ base: base,ignore:["**/node_modules/**","**/.git/**","**/images/**",]})
   }
   console.log('use github driver')
   return githubDriver({
