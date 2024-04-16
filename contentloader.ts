@@ -2,6 +2,7 @@ import {remoteSource} from "./remote";
 import {getReadingTime, ReadingTime} from "./.vitepress/readTime";
 import fsDriver from "unstorage/drivers/fs";
 import githubDriver from "unstorage/drivers/github";
+import {dateMap} from "./shared";
 export interface ArticleFrontMatter {
   id: string,
   index?: string,
@@ -30,7 +31,9 @@ export interface Content {
   [key: string]: any
 }
 
-let imagePattern = /(!\[.*]\()(\/images\/[A-Za-z0-9]+\/[A-Za-z0-9]+\/[0-9]{4}_[0-9]{4}\/[0-9]{4}(_5)?\/.+\.webp.*\))/g
+// import '.vitepress/theme/index.ts'
+
+  let imagePattern = /(!\[.*]\()(\/images\/[A-Za-z0-9]+\/[A-Za-z0-9]+\/[0-9]{4}_[0-9]{4}\/[0-9]{4}(_5)?\/.+\.webp.*\))/g
 
 
 const createDriver = ()=> {
@@ -47,13 +50,18 @@ const createDriver = ()=> {
   })
 }
 
+const formatDate = (date: Date) => {
+  // return 2021/01/12
+  return `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+}
+
 const driver = createDriver()
 // transformedSource
 const source:Promise<Content[]> = (async ()=> {
   console.log('start load remote content')
   const rs = await remoteSource(driver)
   console.log('remote content loaded')
-  return rs.map(it=> {
+  let res=  rs.map(it=> {
     let fn = it.key.split(':').at(-1)
     const readingTime = getReadingTime(it.content)
     // pr
@@ -84,9 +92,17 @@ const source:Promise<Content[]> = (async ()=> {
         readingTime,
       },
       content,
-
     }
   })
+  res.map(it=>(({id:it.id, date: it.frontmatter.date})))
+    .forEach(item=> {
+      console.log("bu")
+      dateMap.set(formatDate(item.date),item.id)
+    })
+  console.log(dateMap)
+  return res
 })()
+
+
 
 export default source
