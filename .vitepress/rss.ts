@@ -11,10 +11,13 @@ interface RssConfig {
   copyright: string
 }
 
+const formatDate = (date: Date) => {
+  // return 2021/01/12
+  return `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+}
 export const RssBuildEndHook = (rssConfig:RssConfig) => async (config: SiteConfig) => {
 
   let md = await createMarkdownRenderer("")
-
 
   const feed = new Feed({
     title: config.site.title,
@@ -26,17 +29,19 @@ export const RssBuildEndHook = (rssConfig:RssConfig) => async (config: SiteConfi
     favicon: `${rssConfig.hostname}/images/index.png`,
     copyright:rssConfig.copyright
   })
-  // You might need to adjust this if your Markdown files
-  // are located in a subfolder
-
   const posts = await source
   posts.sort(
     (a, b) =>
       +b.frontmatter.date -
       +a.frontmatter.date
   )
+  let dateMap = {} as Record<string, string>;
 
   for (const { id, frontmatter, content } of posts) {
+    let date = formatDate(frontmatter.date)
+    if(!dateMap[date] && frontmatter.category == 'btnews'){
+      dateMap[date] = `/${id}`
+    }
     feed.addItem({
       title: frontmatter.title,
       id: id,
@@ -46,6 +51,6 @@ export const RssBuildEndHook = (rssConfig:RssConfig) => async (config: SiteConfi
       date: frontmatter.date
     })
   }
-
+  writeFileSync(path.join(config.outDir, 'datemap.json'), JSON.stringify(dateMap))
   writeFileSync(path.join(config.outDir, 'feed.rss'), feed.rss2())
 }

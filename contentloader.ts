@@ -2,7 +2,6 @@ import {remoteSource} from "./remote";
 import {getReadingTime, ReadingTime} from "./.vitepress/readTime";
 import fsDriver from "unstorage/drivers/fs";
 import githubDriver from "unstorage/drivers/github";
-import {dateMap} from "./shared";
 export interface ArticleFrontMatter {
   id: string,
   index?: string,
@@ -50,10 +49,6 @@ const createDriver = ()=> {
   })
 }
 
-const formatDate = (date: Date) => {
-  // return 2021/01/12
-  return `/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-}
 
 const driver = createDriver()
 // transformedSource
@@ -94,12 +89,6 @@ const source:Promise<Content[]> = (async ()=> {
       content,
     }
   })
-  res.map(it=>(({id:it.id, date: it.frontmatter.date})))
-    .forEach(item=> {
-      console.log("bu")
-      dateMap.set(formatDate(item.date),item.id)
-    })
-  console.log(dateMap)
   return res
 })()
 

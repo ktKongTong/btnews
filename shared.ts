@@ -1,2 +1,3 @@
-
-export const dateMap  = new Map<string,string>()
+import 'dotenv/config'
+// todo upgarde to env
+export const baseURL = `https://btnews.ktlab.io`;
