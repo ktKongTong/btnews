@@ -24,7 +24,7 @@ async function loadRemoteSource (driver:Driver):Promise<RemoteSource[]> {
       title: fm.data.title?? key.split(":").at(-1),
       key: key,
       frontmatter: fm.data,
-      content: fm.content
+      content: content
     }
   })
   const res=  await Promise.all(it)
