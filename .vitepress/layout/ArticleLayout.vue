@@ -4,7 +4,7 @@
   import VideoService from "../components/video/VideoService.vue";
   import HomeCardItem from "../components/HomeCardItem.vue";
   import { data as recent } from '../../content/recent.data'
-  import {computed} from "vue";
+  import {computed, ref} from "vue";
   import {merge} from "radash";
   import { Calendar,Tag,Hourglass } from 'lucide-vue-next';
 
@@ -37,10 +37,27 @@
       day: 'numeric',
     })
   }
+  const showBanner = ref(true)
+  const removeLayoutHeight = ()=> {
+    showBanner.value = false
+    document.documentElement.style.setProperty("--vp-layout-top-height", "0px");
+  }
+
 </script>
 
 <template>
   <Layout>
+    <template #layout-top v-if="showBanner">
+      <div class="w-full items-center font-bold text-white flex m-auto p-2 fixed h-16 z-50  bg-blue-500 dark:bg-blue-300">
+          <span class="break-all m-auto">
+            已迁移至 vitepress，同步新内容（如高见）！
+            不过仍可访问<a href="https://vp-btnews.ktlab.io" class="text-blue-200">旧版</a>，但不会再有内容更新
+          </span>
+        <div class="p-2 cursor-pointer" v-on:click="removeLayoutHeight()">
+          x
+        </div>
+      </div>
+    </template>
     <template #doc-before  v-if="!frontmatter?.catalog">
       <h1 class="text-2xl font-bold">
         {{frontmatter.title}}

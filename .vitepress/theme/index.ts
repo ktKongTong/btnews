@@ -2,7 +2,6 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import './tailwind.postcss'
 import ArticleLayout from "../layout/ArticleLayout.vue";
 
 export default {

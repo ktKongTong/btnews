@@ -1,5 +1,6 @@
 export default {
   content: [
-    './.vitepress/**/*.{js,ts,vue}',
+    './.vitepress/**/*.{html,js,vue,ts,md}',
+    './.vitepress/*.{html,js,vue,ts,md}',
   ],
 }
