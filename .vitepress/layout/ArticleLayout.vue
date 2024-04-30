@@ -25,6 +25,7 @@
     if(xgid) {
       current.push({provider: "XiGua", id: xgid})
     }
+    console.log('tabContent Update',current)
     return current
   })
   const frontmatter = computed(()=> {

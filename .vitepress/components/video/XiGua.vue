@@ -1,15 +1,13 @@
 <script setup lang="ts">
-       const { id, start } =  defineProps({
-        id: {
-            type: String,
-            default: ""
-        },
-        start:{
-            type: String,
-            default: "0"
-        },
-    })
-    const src = `https://www.ixigua.com/iframe/${id}?autoplay=0&startTime=${start}`
+interface XiguaProps {
+  id: string,
+  start?: string
+}
+import {computed} from "vue";
+const props =  defineProps<XiguaProps>()
+const src = computed(()=>{
+  return `https://www.ixigua.com/iframe/${props.id}?autoplay=0&startTime=${props.start ?? 0}`
+})
 </script>
 <template>
     <iframe 

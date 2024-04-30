@@ -1,16 +1,13 @@
 <script setup lang="ts">
-       const { id, start } =  defineProps({
-        id: {
-            type: String,
-            default: ""
-        },
-        start:{
-            type: String,
-            default: "0"
-        },
-    })
-    const src = `https://www.youtube-nocookie.com/embed/${id}?start=${start}`
-    // console.log(src)
+  import {computed} from "vue";
+  interface YoutubeProps {
+    id: string,
+    start?: string
+  }
+  const props =  defineProps<YoutubeProps>()
+  const src = computed(()=> {
+    return `https://www.youtube-nocookie.com/embed/${props.id}?start=${props.start}`
+  })
 </script>
 <template>
         <iframe
