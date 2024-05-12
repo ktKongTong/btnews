@@ -37,7 +37,7 @@ export default defineConfig({
   srcDir:'content',
   ignoreDeadLinks: true,
   buildEnd:RssBuildEndHook({
-    hostname: 'https://vp-btnews.ktlab.io',
+    hostname: 'https://btnews.ktlab.io',
     language: 'zh',
     copyright: ""
   }),
