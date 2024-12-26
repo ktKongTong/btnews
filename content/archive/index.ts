@@ -1,9 +1,8 @@
 import {archiveSidebar} from "./sidebar";
 import {archiveNavbar} from "./navbar";
 import * as fs from 'fs';
-import pkg from 'js-yaml';
+import { load } from 'js-yaml';
 import path from "path";
-const { load } = pkg;
 
 type ArchiveNamespace = {
   namespaces: Archive[]
