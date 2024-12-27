@@ -22,7 +22,6 @@ export interface ArticleFrontMatter {
 
 export interface Content {
   key: string,
-  // namespace_item_idx
   id: string,
   index?: string,
   frontmatter: ArticleFrontMatter,

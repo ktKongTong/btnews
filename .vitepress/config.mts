@@ -8,6 +8,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/images/index.png' }],
     ['meta', { property: 'og:image', content: '/images/index.png' }],
+    ['meta', {property: 'charset', content: 'utf-8'}],
     ['meta', { property: 'twitter:image', content: '/images/index.png' }],
     [
       'script',
@@ -77,5 +78,17 @@ export default defineConfig({
         },
         link: 'https://btnews.ktlab.io/feed.rss' },
     ],
+  },
+  vite: {
+    plugins: [{
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.originalUrl === '/feed.rss') {
+            res.setHeader('content-type', 'application/rss+xml;charset=utf-8')
+          }
+          next()
+        })
+      }
+    }]
   }
 })

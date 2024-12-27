@@ -52,5 +52,6 @@ export const RssBuildEndHook = (rssConfig:RssConfig) => async (config: SiteConfi
     })
   }
   writeFileSync(path.join(config.outDir, 'datemap.json'), JSON.stringify(dateMap))
-  writeFileSync(path.join(config.outDir, 'feed.rss'), feed.rss2())
+  const content = feed.rss2()
+  writeFileSync(path.join(config.outDir, 'feed.rss'), content)
 }

@@ -1,4 +1,0 @@
-[submodule "docs"]
-	branch = master
-	path = docs
-	url = git@github.com:ktKongTong/btnews.git

@@ -5,5 +5,16 @@
     "deploymentEnabled": {
       "master": false
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/feed.rss",
+      "headers": [
+        {
+          "key": "content-type",
+          "value": "application/rss+xml;charset=utf-8"
+        }
+      ]
+    }
+  ]
 }

@@ -31,7 +31,6 @@ export default {
         )
 
         const catalogs = archives.flatMap(ns=> {
-          // 一个ns一个？一个 category 一个
           const categories = ns.categories.map(category=>
             ({
               ns: ns.id,
