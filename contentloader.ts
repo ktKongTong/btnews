@@ -35,18 +35,20 @@ export interface Content {
 
 
 const createDriver = ()=> {
-  if(process.env.NODE_ENV === "development" || process.env.DRIVER === "local") {
+  const env = process.env as any
+  if(env.NOVE_ENV === "development" || env.DRIVER === "local") {
     let base = process.env.DOCS_PATH ?? "./example-docs"
     return fsDriver({ base: base,ignore:["**/node_modules/**","**/.git/**","**/images/**",]})
   }
-  let repo = process.env.GIT_REPO ?? "ktKongTong/btnews"
-  let branch = process.env.GIT_BRACH ?? "master"
+  const repo = env.GIT_REPO ?? "ktKongTong/btnews"
+  const branch = env.GIT_BRACH ?? "master"
+  const token = env.GITHUB_TOKEN
   console.log(`use github driver, load for branch: ${branch}`)
   return githubDriver({
     repo: repo,
     branch: branch,
     dir: "/docs",
-    token: process.env.GITHUB_TOKEN,
+    token: token,
   })
 }
 
