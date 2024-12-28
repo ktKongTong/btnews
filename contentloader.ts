@@ -41,7 +41,7 @@ const createDriver = ()=> {
     return fsDriver({ base: base,ignore:["**/node_modules/**","**/.git/**","**/images/**",]})
   }
   const repo = env.GIT_REPO ?? "ktKongTong/btnews"
-  const branch = env.GIT_BRACH ?? "master"
+  const branch = env.GIT_BRANCH ?? "master"
   const token = env.GITHUB_TOKEN
   console.log(`use github driver, load for branch: ${branch}`)
   return githubDriver({
