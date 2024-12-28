@@ -67,8 +67,20 @@ const source:Promise<Content[]> = (async ()=> {
     let itemId = fn!.replace('.md','')
     let index = itemId.split('_').at(-1)
     let ns = it.key.split(':').at(0) ?? 'other'
-    let tags = it.frontmatter.tags??[] as string[]
+    let tags = it.frontmatter.tags ?? it.frontmatter.tag ??[] as string[]
     let category = fn!.split('_')[0]
+    let date = it.frontmatter.date
+    if(typeof date === 'number') {
+      date = new Date(date * 1000)
+    }else if(typeof date === 'string' && /\d{10}/.test(date)) {
+      date = new Date(parseInt(date) * 1000)
+    }else {
+      try {
+        date = new Date(date)
+      }catch {
+        date = new Date()
+      }
+    }
     category = it.frontmatter.category??category
 
     return {
@@ -77,13 +89,13 @@ const source:Promise<Content[]> = (async ()=> {
       index,
       title: it.title,
       frontmatter: {
+        ...it.frontmatter,
         catalog: false,
         namespace: ns,
         id: `${ns}_${itemId}`,
         index,
-        date: it.frontmatter.date ?? new Date(),
-        description: it.frontmatter.description ?? "",
-        ...it.frontmatter,
+        date: date ?? new Date(),
+        description: it.frontmatter.description?.replace('\n') ?? "",
         title: it.title,
         tags: tags,
         category,
