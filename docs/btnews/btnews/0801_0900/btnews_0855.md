@@ -1,6 +1,6 @@
 ---
 title: 【睡前消息855】中国演员泰国失联，根源在缅甸
-description: 代班主播：@讲点黑话 
+description: 解决缅甸电诈问题，指望泰国近乎空想。要是有这个能力，泰国也就不是今日之泰国了。
 tag: []
 date: 1737283675
 bvid: BV1VgwreNEDN
