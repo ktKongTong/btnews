@@ -1,7 +1,7 @@
 ---
 title: 【睡前消息864】射雕、封神都稀烂，烂法不一样
 description: 徐克版《射雕》观后感《封神2》观后感
-tag: []
+tag: [影评]
 date: 1739618128
 bvid: BV1LUAPeqET9
 ---
